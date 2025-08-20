@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://rrfj6px2553t"]
+
+[ext_resource type="Script" uid="uid://jaqdkmgejt3j" path="res://minegrid.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://di8fssc4rct38" path="res://map.png" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://y82eav7geqfk" path="res://tile.gd" id="3_h2yge"]
+
+[sub_resource type="Theme" id="Theme_0xm2m"]
+GridContainer/constants/h_separation = 0
+GridContainer/constants/v_separation = 0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
+atlas = ExtResource("2_h2yge")
+region = Rect2(153, 49, 16, 16)
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="minegrid" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 649.0
+offset_bottom = 648.0
+theme = SubResource("Theme_0xm2m")
+script = ExtResource("1_ig7tw")
+gridsize = 30
+
+[node name="tile" type="TextureButton" parent="minegrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = SubResource("AtlasTexture_h2yge")
+stretch_mode = 0
+script = ExtResource("3_h2yge")
+
+[connection signal="pressed" from="minegrid/tile" to="minegrid/tile" method="_on_press"]
