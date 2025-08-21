@@ -29,7 +29,8 @@ offset_right = 649.0
 offset_bottom = 648.0
 theme = SubResource("Theme_0xm2m")
 script = ExtResource("1_ig7tw")
-gridsize = 30
+gridsize = Vector2(10, 10)
+minecount = 7
 
 [node name="tile" type="TextureButton" parent="minegrid"]
 layout_mode = 2

@@ -1,6 +1,7 @@
 extends TextureButton
 
 var index: Vector3 = Vector3.ZERO
+var revealed := false
 var one := preload("res://1.tres")
 
 func _ready() -> void:
@@ -23,5 +24,6 @@ func get_neighbours() -> Array:
 	return neigbours
 
 func _on_pressed() -> void:
-	await get_parent().clicked(index, self)
+	revealed = true
+	await get_parent().clicked(self)
 	texture_normal = make_atlas(index.z * 17)
