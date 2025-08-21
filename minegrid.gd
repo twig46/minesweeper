@@ -25,22 +25,19 @@ func spawn_grid():
 			index.x = 0
 	example.queue_free()
 
-func clicked(buttindex: Vector3, tile: Control) -> void:
+func clicked(tile: Control) -> void:
 	if first:
 		first = false
-		print(get_child_count())
-		for c in get_children():
-			if abs(c.index.x - buttindex.x) <= 1 and abs(c.index.y - buttindex.y) <= 1:
-				c.index.z = 0
-				c._on_pressed()
-				return
+		generate()
+		for n in tile.get_neighbours():
+			n.index = 0
 	else:
 		for c in get_children():
-			if abs(c.index.x - buttindex.x) <= 1 and abs(c.index.y - buttindex.y) <= 1 and c.index.z == 13:
+			if abs(c.index.x - tile.index.x) <= 1 and abs(c.index.y - tile.index.y) <= 1 and c.index.z == 13:
 				tile.index.z += 1
 				return
-	if buttindex.z == 0:
-		zero_spread(buttindex)
+	if tile.index.z == 0:
+		zero_spread(tile.index)
 		return
 
 
@@ -54,3 +51,6 @@ func zero_spread(buttindex):
 		if abs(c.index.x - buttindex.x) <= 1 and abs(c.index.y - buttindex.y) <= 1 and c.index.z == 0:
 			c._on_pressed()
 			return
+
+func generate():
+	pass
