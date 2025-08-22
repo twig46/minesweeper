@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://rrfj6px2553t"]
+[gd_scene load_steps=7 format=3 uid="uid://rrfj6px2553t"]
 
 [ext_resource type="Script" uid="uid://jaqdkmgejt3j" path="res://minegrid.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://di8fssc4rct38" path="res://map.png" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://y82eav7geqfk" path="res://tile.gd" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://b4pcb1ah51gu6" path="res://reference.png" id="4_1bvp3"]
 
 [sub_resource type="Theme" id="Theme_0xm2m"]
 GridContainer/constants/h_separation = 0
@@ -18,26 +19,163 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -1.0
-offset_right = -1.0
+offset_right = -504.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="minegrid" type="GridContainer" parent="."]
-layout_mode = 0
-offset_left = 1.0
-offset_right = 649.0
-offset_bottom = 648.0
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -284.5
+offset_top = -104.0
+offset_right = 795.5
+offset_bottom = 292.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = SubResource("Theme_0xm2m")
+columns = 31
 script = ExtResource("1_ig7tw")
-gridsize = Vector2(10, 10)
-minecount = 7
+gridsize = Vector2(70, 10)
 
 [node name="tile" type="TextureButton" parent="minegrid"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+button_mask = 3
 texture_normal = SubResource("AtlasTexture_h2yge")
 stretch_mode = 0
 script = ExtResource("3_h2yge")
 
+[node name="tile2" type="TextureButton" parent="minegrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_mask = 3
+texture_normal = SubResource("AtlasTexture_h2yge")
+stretch_mode = 0
+script = ExtResource("3_h2yge")
+
+[node name="tile3" type="TextureButton" parent="minegrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_mask = 3
+texture_normal = SubResource("AtlasTexture_h2yge")
+stretch_mode = 0
+script = ExtResource("3_h2yge")
+
+[node name="tile4" type="TextureButton" parent="minegrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_mask = 3
+texture_normal = SubResource("AtlasTexture_h2yge")
+stretch_mode = 0
+script = ExtResource("3_h2yge")
+
+[node name="tile5" type="TextureButton" parent="minegrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_mask = 3
+texture_normal = SubResource("AtlasTexture_h2yge")
+stretch_mode = 0
+script = ExtResource("3_h2yge")
+
+[node name="tile6" type="TextureButton" parent="minegrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_mask = 3
+texture_normal = SubResource("AtlasTexture_h2yge")
+stretch_mode = 0
+script = ExtResource("3_h2yge")
+
+[node name="tile7" type="TextureButton" parent="minegrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_mask = 3
+texture_normal = SubResource("AtlasTexture_h2yge")
+stretch_mode = 0
+script = ExtResource("3_h2yge")
+
+[node name="tile8" type="TextureButton" parent="minegrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_mask = 3
+texture_normal = SubResource("AtlasTexture_h2yge")
+stretch_mode = 0
+script = ExtResource("3_h2yge")
+
+[node name="tile9" type="TextureButton" parent="minegrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_mask = 3
+texture_normal = SubResource("AtlasTexture_h2yge")
+stretch_mode = 0
+script = ExtResource("3_h2yge")
+
+[node name="tile10" type="TextureButton" parent="minegrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_mask = 3
+texture_normal = SubResource("AtlasTexture_h2yge")
+stretch_mode = 0
+script = ExtResource("3_h2yge")
+
+[node name="tile11" type="TextureButton" parent="minegrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_mask = 3
+texture_normal = SubResource("AtlasTexture_h2yge")
+stretch_mode = 0
+script = ExtResource("3_h2yge")
+
+[node name="tile12" type="TextureButton" parent="minegrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_mask = 3
+texture_normal = SubResource("AtlasTexture_h2yge")
+stretch_mode = 0
+script = ExtResource("3_h2yge")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -361.0
+offset_bottom = -486.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("4_1bvp3")
+draw_center = false
+patch_margin_left = 12
+patch_margin_top = 55
+patch_margin_right = 8
+patch_margin_bottom = 8
+
 [connection signal="pressed" from="minegrid/tile" to="minegrid/tile" method="_on_press"]
+[connection signal="pressed" from="minegrid/tile2" to="minegrid/tile2" method="_on_press"]
+[connection signal="pressed" from="minegrid/tile3" to="minegrid/tile3" method="_on_press"]
+[connection signal="pressed" from="minegrid/tile4" to="minegrid/tile4" method="_on_press"]
+[connection signal="pressed" from="minegrid/tile5" to="minegrid/tile5" method="_on_press"]
+[connection signal="pressed" from="minegrid/tile6" to="minegrid/tile6" method="_on_press"]
+[connection signal="pressed" from="minegrid/tile7" to="minegrid/tile7" method="_on_press"]
+[connection signal="pressed" from="minegrid/tile8" to="minegrid/tile8" method="_on_press"]
+[connection signal="pressed" from="minegrid/tile9" to="minegrid/tile9" method="_on_press"]
+[connection signal="pressed" from="minegrid/tile10" to="minegrid/tile10" method="_on_press"]
+[connection signal="pressed" from="minegrid/tile11" to="minegrid/tile11" method="_on_press"]
+[connection signal="pressed" from="minegrid/tile12" to="minegrid/tile12" method="_on_press"]

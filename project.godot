@@ -15,6 +15,10 @@ run/main_scene="uid://rrfj6px2553t"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[debug]
+
+settings/gdscript/max_call_stack=2047
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/wakatime/plugin.cfg")
