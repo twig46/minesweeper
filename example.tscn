@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cievclxbhurkf"]
+
+[ext_resource type="Texture2D" uid="uid://di8fssc4rct38" path="res://map.png" id="1_n51mc"]
+[ext_resource type="Script" uid="uid://y82eav7geqfk" path="res://tile.gd" id="2_8lvy3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
+atlas = ExtResource("1_n51mc")
+region = Rect2(153, 49, 16, 16)
+
+[node name="tile" type="TextureButton"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_mask = 3
+texture_normal = SubResource("AtlasTexture_h2yge")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_8lvy3")
+
+[connection signal="pressed" from="." to="." method="_on_press"]

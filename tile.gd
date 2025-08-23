@@ -5,6 +5,7 @@ var revealed := false
 var one := preload("res://1.tres")
 var leftright
 var flagged := false
+var truevalue:int
 
 func _ready() -> void:
 	texture_normal = make_atlas(9 * 17)
@@ -28,9 +29,10 @@ func get_neighbours() -> Array:
 func _on_pressed() -> void:
 	if leftright == MOUSE_BUTTON_RIGHT:
 		flag()
-	else:
+	elif !flagged:
 		if !revealed:
 			revealed = true
+			texture_pressed = null
 			await get_parent().clicked(self)
 		else:
 			await get_parent().clicked(self, true)
@@ -45,8 +47,10 @@ func flag():
 	if !flagged and !revealed:
 		flagged = true
 		texture_normal = make_atlas(10 * 17)
+		texture_pressed = null
 		get_parent().remaining_tiles.erase(self)
 	elif flagged and !revealed:
 		flagged = false
 		texture_normal = make_atlas(9 * 17)
+		texture_pressed = make_atlas(0)
 		get_parent().remaining_tiles.append(self)
