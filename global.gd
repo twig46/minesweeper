@@ -1,4 +1,4 @@
 extends Node
 
-var gridsize := Vector2(50, 50)
-var minecount := 300
+var gridsize := Vector2(30, 16)
+var minecount := 99
