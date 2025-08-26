@@ -8,6 +8,7 @@ var first := true
 var remaining_tiles := []
 var curstate: String = "normal"
 var examtscn = preload("res://example.tscn")
+var remaining_bombs := []
 
 signal reload
 
@@ -33,7 +34,6 @@ func spawn_grid():
 	example.queue_free()
 
 func clicked(tile: Control, clear:bool = false) -> void:
-	var remaining_bombs := []
 	remaining_tiles.erase(tile)
 	for r in remaining_tiles:
 		if bombs.has(r):
@@ -91,7 +91,7 @@ func win_lose():
 	for b in bombs:
 		if b.flagged:
 			flags += 1
-	if flags == minecount:
+	if flags == minecount and remaining_tiles.is_empty():
 		curstate = "win"
 		print("win")
 

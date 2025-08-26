@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://rrfj6px2553t"]
+[gd_scene load_steps=13 format=3 uid="uid://rrfj6px2553t"]
 
+[ext_resource type="Script" uid="uid://c5aojj0nurotl" path="res://retainer.gd" id="1_7mycd"]
 [ext_resource type="Script" uid="uid://jaqdkmgejt3j" path="res://minegrid.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://di8fssc4rct38" path="res://map.png" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://y82eav7geqfk" path="res://tile.gd" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://b4pcb1ah51gu6" path="res://reference.png" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://d3d16ki3jhf4u" path="res://face.gd" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://b4ks6eq0gx4ln" path="res://7segs.gd" id="7_272bh"]
+[ext_resource type="Script" uid="uid://dav0ujyeajd6j" path="res://timeseg.gd" id="8_5vw27"]
 
 [sub_resource type="Theme" id="Theme_0xm2m"]
 GridContainer/constants/h_separation = 0
@@ -29,6 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7mycd")
 
 [node name="sweeper" type="Control" parent="."]
 z_index = 10
@@ -104,27 +108,97 @@ script = ExtResource("5_lquwl")
 
 [node name="gridx" type="SpinBox" parent="."]
 layout_mode = 0
-offset_left = 951.0
+offset_left = 930.0
 offset_top = 185.0
-offset_right = 1037.56
+offset_right = 1054.0
 offset_bottom = 216.0
 suffix = "x"
+custom_arrow_step = 1.0
 
 [node name="gridy" type="SpinBox" parent="."]
 layout_mode = 0
-offset_left = 951.0
+offset_left = 930.0
 offset_top = 219.0
-offset_right = 1037.56
+offset_right = 1054.0
 offset_bottom = 250.0
 suffix = "y"
 
 [node name="mines" type="SpinBox" parent="."]
 layout_mode = 0
-offset_left = 951.0
+offset_left = 930.0
 offset_top = 252.0
-offset_right = 1037.56
+offset_right = 1054.0
 offset_bottom = 283.0
+max_value = 1000.0
+value = 999.0
 suffix = "mines"
+
+[node name="mineseg" type="Control" parent="."]
+z_index = 1
+anchors_preset = 0
+offset_left = 893.0
+offset_top = 290.0
+offset_right = 1244.0
+offset_bottom = 496.0
+scale = Vector2(0.5, 0.5)
+script = ExtResource("7_272bh")
+
+[node name="3" type="Sprite2D" parent="mineseg"]
+scale = Vector2(8.96154, 8.96154)
+texture = ExtResource("2_h2yge")
+centered = false
+region_enabled = true
+region_rect = Rect2(154, 0, 13, 23)
+
+[node name="2" type="Sprite2D" parent="mineseg"]
+position = Vector2(117, 0)
+scale = Vector2(8.96154, 8.96154)
+texture = ExtResource("2_h2yge")
+centered = false
+region_enabled = true
+region_rect = Rect2(154, 0, 13, 23)
+
+[node name="1" type="Sprite2D" parent="mineseg"]
+position = Vector2(234, 0)
+scale = Vector2(8.96154, 8.96154)
+texture = ExtResource("2_h2yge")
+centered = false
+region_enabled = true
+region_rect = Rect2(154, 0, 13, 23)
+
+[node name="timeseg" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 895.0
+offset_top = 407.0
+offset_right = 1246.0
+offset_bottom = 613.0
+scale = Vector2(0.5, 0.5)
+script = ExtResource("8_5vw27")
+
+[node name="3" type="Sprite2D" parent="timeseg"]
+scale = Vector2(8.96154, 8.96154)
+texture = ExtResource("2_h2yge")
+centered = false
+region_enabled = true
+region_rect = Rect2(154, 0, 13, 23)
+
+[node name="2" type="Sprite2D" parent="timeseg"]
+position = Vector2(117, 0)
+scale = Vector2(8.96154, 8.96154)
+texture = ExtResource("2_h2yge")
+centered = false
+region_enabled = true
+region_rect = Rect2(154, 0, 13, 23)
+
+[node name="1" type="Sprite2D" parent="timeseg"]
+position = Vector2(234, 0)
+scale = Vector2(8.96154, 8.96154)
+texture = ExtResource("2_h2yge")
+centered = false
+region_enabled = true
+region_rect = Rect2(154, 0, 13, 23)
 
 [connection signal="pressed" from="sweeper/minegrid/tile" to="sweeper/minegrid/tile" method="_on_press"]
 [connection signal="button_up" from="face" to="face" method="_on_reset"]

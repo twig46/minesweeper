@@ -53,12 +53,15 @@ func _input(event: InputEvent) -> void:
 			texture_pressed = null
 
 func flag():
-	if !flagged and !revealed:
+	var minedisplay = get_node("/root/main/mineseg")
+	if !flagged and !revealed and minedisplay.curmines > -99:
 		flagged = true
 		texture_normal = make_atlas(10 * 17)
 		texture_pressed = null
 		get_parent().remaining_tiles.erase(self)
+		minedisplay.update(-1)
 	elif flagged and !revealed:
 		flagged = false
 		texture_normal = make_atlas(9 * 17)
 		get_parent().remaining_tiles.append(self)
+		minedisplay.update(1)

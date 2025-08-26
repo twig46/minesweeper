@@ -26,8 +26,7 @@ settings/gdscript/max_call_stack=2047
 [display]
 
 window/size/resizable=false
-window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
