@@ -23,6 +23,11 @@ Global="*res://global.gd"
 
 settings/gdscript/max_call_stack=2047
 
+[display]
+
+window/size/resizable=false
+window/stretch/aspect="expand"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/wakatime/plugin.cfg")
