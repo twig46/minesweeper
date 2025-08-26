@@ -1,7 +1,17 @@
 extends TextureButton
 
 var index: Vector3 = Vector3.ZERO
-var revealed := false
+var _revealed := false
+var revealed : bool :
+	set(value):
+		_revealed = value
+		if _revealed:
+			texture_pressed = null
+		else:
+			texture_pressed = make_atlas(0)
+	get:
+		return _revealed
+
 var one := preload("res://1.tres")
 var leftright
 var flagged := false
@@ -9,9 +19,7 @@ var truevalue:int
 
 func _ready() -> void:
 	texture_normal = make_atlas(9 * 17)
-
 	texture_pressed = make_atlas(0)
-
 	pressed.connect(_on_pressed)
 
 func make_atlas(x: int) -> AtlasTexture:
@@ -28,20 +36,21 @@ func get_neighbours() -> Array:
 
 func _on_pressed() -> void:
 	if leftright == MOUSE_BUTTON_RIGHT:
+		revealed = revealed
 		flag()
 	elif !flagged:
 		if !revealed:
 			revealed = true
-			texture_pressed = null
 			await get_parent().clicked(self)
 		else:
 			await get_parent().clicked(self, true)
 	get_parent().win_lose()
-		
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		leftright = event.button_index
+		if leftright == MOUSE_BUTTON_RIGHT:
+			texture_pressed = null
 
 func flag():
 	if !flagged and !revealed:
@@ -52,5 +61,4 @@ func flag():
 	elif flagged and !revealed:
 		flagged = false
 		texture_normal = make_atlas(9 * 17)
-		texture_pressed = make_atlas(0)
 		get_parent().remaining_tiles.append(self)
