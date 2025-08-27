@@ -4,6 +4,7 @@ var gridsize := Global.gridsize
 var minecount := Global.minecount
 var example:TextureButton
 var bombs := []
+var flagged := []
 var first := true
 var remaining_tiles := []
 var curstate: String = "normal"
@@ -45,8 +46,15 @@ func clicked(tile: Control, clear:bool = false) -> void:
 	if tile.index.z == 14:
 		curstate = "lose"
 		print("lose")
+		for f in flagged:
+			if bombs.has(f):
+				f.texture_normal = f.make_atlas(13 * 17)
+			else:
+				f.texture_normal = f.make_atlas(15 * 17)
 		for b in bombs:
 			reveal_tile(b)
+		for c in get_children():
+			c.disabled = true
 	if !clear:
 		if first:
 			first = false
@@ -107,13 +115,9 @@ func reveal_tile(tile: Control) -> void:
 			if n.index.z == 14:  # bomb
 				count += 1
 		tile.index.z = count
-	
-	# Reveal tile
 	tile.revealed = true
 	tile.texture_normal = tile.make_atlas(count * 17)
 	remaining_tiles.erase(tile)
-	
-	# If zero, recurse
 	if count == 0:
 		for n in tile.get_neighbours():
 			reveal_tile(n)

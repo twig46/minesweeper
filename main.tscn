@@ -133,6 +133,40 @@ max_value = 1000.0
 value = 999.0
 suffix = "mines"
 
+[node name="timeseg" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 893.0
+offset_top = 407.0
+offset_right = 1244.0
+offset_bottom = 613.0
+scale = Vector2(0.5, 0.5)
+script = ExtResource("8_5vw27")
+
+[node name="3" type="Sprite2D" parent="timeseg"]
+scale = Vector2(8.96154, 8.96154)
+texture = ExtResource("2_h2yge")
+centered = false
+region_enabled = true
+region_rect = Rect2(154, 0, 13, 23)
+
+[node name="2" type="Sprite2D" parent="timeseg"]
+position = Vector2(117, 0)
+scale = Vector2(8.96154, 8.96154)
+texture = ExtResource("2_h2yge")
+centered = false
+region_enabled = true
+region_rect = Rect2(154, 0, 13, 23)
+
+[node name="1" type="Sprite2D" parent="timeseg"]
+position = Vector2(234, 0)
+scale = Vector2(8.96154, 8.96154)
+texture = ExtResource("2_h2yge")
+centered = false
+region_enabled = true
+region_rect = Rect2(154, 0, 13, 23)
+
 [node name="mineseg" type="Control" parent="."]
 z_index = 1
 anchors_preset = 0
@@ -166,39 +200,6 @@ centered = false
 region_enabled = true
 region_rect = Rect2(154, 0, 13, 23)
 
-[node name="timeseg" type="Control" parent="."]
-z_index = 1
-layout_mode = 3
-anchors_preset = 0
-offset_left = 895.0
-offset_top = 407.0
-offset_right = 1246.0
-offset_bottom = 613.0
-scale = Vector2(0.5, 0.5)
-script = ExtResource("8_5vw27")
-
-[node name="3" type="Sprite2D" parent="timeseg"]
-scale = Vector2(8.96154, 8.96154)
-texture = ExtResource("2_h2yge")
-centered = false
-region_enabled = true
-region_rect = Rect2(154, 0, 13, 23)
-
-[node name="2" type="Sprite2D" parent="timeseg"]
-position = Vector2(117, 0)
-scale = Vector2(8.96154, 8.96154)
-texture = ExtResource("2_h2yge")
-centered = false
-region_enabled = true
-region_rect = Rect2(154, 0, 13, 23)
-
-[node name="1" type="Sprite2D" parent="timeseg"]
-position = Vector2(234, 0)
-scale = Vector2(8.96154, 8.96154)
-texture = ExtResource("2_h2yge")
-centered = false
-region_enabled = true
-region_rect = Rect2(154, 0, 13, 23)
-
+[connection signal="button_down" from="sweeper/minegrid/tile" to="sweeper/minegrid/tile" method="_on_held"]
 [connection signal="pressed" from="sweeper/minegrid/tile" to="sweeper/minegrid/tile" method="_on_press"]
 [connection signal="button_up" from="face" to="face" method="_on_reset"]

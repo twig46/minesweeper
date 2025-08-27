@@ -54,14 +54,30 @@ func _input(event: InputEvent) -> void:
 
 func flag():
 	var minedisplay = get_node("/root/main/mineseg")
+	var minegrid = get_parent()
 	if !flagged and !revealed and minedisplay.curmines > -99:
 		flagged = true
 		texture_normal = make_atlas(10 * 17)
 		texture_pressed = null
 		get_parent().remaining_tiles.erase(self)
+		minegrid.flagged.append(self)
 		minedisplay.update(-1)
 	elif flagged and !revealed:
 		flagged = false
 		texture_normal = make_atlas(9 * 17)
 		get_parent().remaining_tiles.append(self)
+		minegrid.flagged.erase(self)
 		minedisplay.update(1)
+
+func _on_held() -> void:
+	if revealed:
+		var neighbours := []
+		for n in get_neighbours():
+			if !n.revealed and !n.flagged:
+				n.texture_normal = make_atlas(0)
+				neighbours.append(n)
+		await button_up
+		for n in neighbours:
+			if !n.revealed:
+				n.texture_normal = make_atlas(9 * 17)
+		
