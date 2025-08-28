@@ -18,6 +18,7 @@ var flagged := false
 var truevalue:int
 
 func _ready() -> void:
+	get_viewport().transparent_bg = true
 	texture_normal = make_atlas(9 * 17)
 	texture_pressed = make_atlas(0)
 	pressed.connect(_on_pressed)
@@ -53,7 +54,7 @@ func _input(event: InputEvent) -> void:
 			texture_pressed = null
 
 func flag():
-	var minedisplay = get_node("/root/main/mineseg")
+	var minedisplay = get_node("/root/main/numbers/mineseg")
 	var minegrid = get_parent()
 	if !flagged and !revealed and minedisplay.curmines > -99:
 		flagged = true
