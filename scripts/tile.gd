@@ -12,7 +12,7 @@ var revealed : bool :
 	get:
 		return _revealed
 
-var one := preload("res://1.tres")
+var one := preload("res://rescources/1.tres")
 var leftright
 var flagged := false
 var truevalue:int

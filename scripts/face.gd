@@ -1,6 +1,6 @@
 extends TextureButton
 
-var one := preload("res://1.tres")
+var one := preload("res://rescources/1.tres")
 var curstate
 
 @onready var minegrid = get_node("/root/main/sweeper/minegrid")
@@ -30,4 +30,4 @@ func make_atlas(x: int) -> AtlasTexture:
 func _on_reset() -> void:
 	Global.gridsize = Vector2(get_node("/root/main/gridx").value, get_node("/root/main/gridy").value)
 	Global.minecount = get_node("/root/main/mines").value
-	get_tree().change_scene_to_file("res://main.tscn")
+	get_tree().change_scene_to_file("res://scenes/main.tscn")

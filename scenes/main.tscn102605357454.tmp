@@ -1,0 +1,210 @@
+[gd_scene load_steps=13 format=3 uid="uid://rrfj6px2553t"]
+
+[ext_resource type="Script" uid="uid://cbt1cqd2rstd7" path="res://scripts/retainer.gd" id="1_tipki"]
+[ext_resource type="Script" uid="uid://brl861csa57mi" path="res://scripts/minegrid.gd" id="2_85g3d"]
+[ext_resource type="Texture2D" uid="uid://dx4k0t1y3mcjp" path="res://map.png" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cqhhvuqwhw7md" path="res://reference.png" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://diu8rvb1e77nb" path="res://scripts/tile.gd" id="4_choun"]
+[ext_resource type="Script" uid="uid://0sxjbgip7ns3" path="res://scripts/face.gd" id="6_ya4ey"]
+[ext_resource type="Script" uid="uid://6bjwdqt84hld" path="res://scripts/7segs.gd" id="7_eb6dy"]
+[ext_resource type="Script" uid="uid://byf0wabpqd0gp" path="res://scripts/timeseg.gd" id="8_trceg"]
+
+[sub_resource type="Theme" id="Theme_0xm2m"]
+GridContainer/constants/h_separation = 0
+GridContainer/constants/v_separation = 0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
+atlas = ExtResource("2_h2yge")
+region = Rect2(153, 49, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bvp3"]
+atlas = ExtResource("2_h2yge")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lquwl"]
+atlas = ExtResource("2_h2yge")
+region = Rect2(25, 24, 24, 24)
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tipki")
+
+[node name="sweeper" type="Control" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 216.0
+offset_top = 108.0
+offset_right = -521.0
+offset_bottom = -126.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 1
+
+[node name="minegrid" type="GridContainer" parent="sweeper"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0xm2m")
+script = ExtResource("2_85g3d")
+
+[node name="tile" type="TextureButton" parent="sweeper/minegrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_mask = 3
+texture_normal = SubResource("AtlasTexture_h2yge")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("4_choun")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="sweeper"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -48.0
+offset_right = 30.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_1bvp3")
+draw_center = false
+region_rect = Rect2(0, 172, 1104, 1104)
+patch_margin_left = 48
+patch_margin_top = 48
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="gridx" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 930.0
+offset_top = 185.0
+offset_right = 1054.0
+offset_bottom = 216.0
+suffix = "x"
+custom_arrow_step = 1.0
+
+[node name="gridy" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 930.0
+offset_top = 219.0
+offset_right = 1054.0
+offset_bottom = 250.0
+suffix = "y"
+
+[node name="mines" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 930.0
+offset_top = 252.0
+offset_right = 1054.0
+offset_bottom = 283.0
+max_value = 1000.0
+value = 999.0
+suffix = "mines"
+
+[node name="mineseg" type="Control" parent="."]
+z_index = 1
+anchors_preset = 0
+offset_left = 893.0
+offset_top = 290.0
+offset_right = 1244.0
+offset_bottom = 496.0
+scale = Vector2(0.5, 0.5)
+script = ExtResource("7_eb6dy")
+
+[node name="3" type="Sprite2D" parent="mineseg"]
+scale = Vector2(8.96154, 8.96154)
+texture = ExtResource("2_h2yge")
+centered = false
+region_enabled = true
+region_rect = Rect2(154, 0, 13, 23)
+
+[node name="2" type="Sprite2D" parent="mineseg"]
+position = Vector2(117, 0)
+scale = Vector2(8.96154, 8.96154)
+texture = ExtResource("2_h2yge")
+centered = false
+region_enabled = true
+region_rect = Rect2(154, 0, 13, 23)
+
+[node name="1" type="Sprite2D" parent="mineseg"]
+position = Vector2(234, 0)
+scale = Vector2(8.96154, 8.96154)
+texture = ExtResource("2_h2yge")
+centered = false
+region_enabled = true
+region_rect = Rect2(154, 0, 13, 23)
+
+[node name="timeseg" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 895.0
+offset_top = 407.0
+offset_right = 1246.0
+offset_bottom = 613.0
+scale = Vector2(0.5, 0.5)
+script = ExtResource("8_trceg")
+
+[node name="3" type="Sprite2D" parent="timeseg"]
+scale = Vector2(8.96154, 8.96154)
+texture = ExtResource("2_h2yge")
+centered = false
+region_enabled = true
+region_rect = Rect2(154, 0, 13, 23)
+
+[node name="2" type="Sprite2D" parent="timeseg"]
+position = Vector2(117, 0)
+scale = Vector2(8.96154, 8.96154)
+texture = ExtResource("2_h2yge")
+centered = false
+region_enabled = true
+region_rect = Rect2(154, 0, 13, 23)
+
+[node name="1" type="Sprite2D" parent="timeseg"]
+position = Vector2(234, 0)
+scale = Vector2(8.96154, 8.96154)
+texture = ExtResource("2_h2yge")
+centered = false
+region_enabled = true
+region_rect = Rect2(154, 0, 13, 23)
+
+[node name="Window" type="Window" parent="."]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+position = Vector2i(923, 55)
+size = Vector2i(120, 120)
+exclusive = true
+unresizable = true
+always_on_top = true
+transparent = true
+
+[node name="face" type="TextureButton" parent="Window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_1bvp3")
+texture_pressed = SubResource("AtlasTexture_lquwl")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("6_ya4ey")
+
+[connection signal="pressed" from="sweeper/minegrid/tile" to="sweeper/minegrid/tile" method="_on_press"]
+[connection signal="button_up" from="Window/face" to="Window/face" method="_on_reset"]

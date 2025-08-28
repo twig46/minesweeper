@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://rrfj6px2553t"]
 
-[ext_resource type="Script" uid="uid://c5aojj0nurotl" path="res://retainer.gd" id="1_7mycd"]
-[ext_resource type="Script" uid="uid://jaqdkmgejt3j" path="res://minegrid.gd" id="1_ig7tw"]
-[ext_resource type="Texture2D" uid="uid://di8fssc4rct38" path="res://map.png" id="2_h2yge"]
-[ext_resource type="Script" uid="uid://y82eav7geqfk" path="res://tile.gd" id="3_h2yge"]
-[ext_resource type="Texture2D" uid="uid://b4pcb1ah51gu6" path="res://reference.png" id="4_1bvp3"]
-[ext_resource type="Script" uid="uid://d3d16ki3jhf4u" path="res://face.gd" id="5_lquwl"]
-[ext_resource type="Script" uid="uid://b4ks6eq0gx4ln" path="res://7segs.gd" id="7_272bh"]
-[ext_resource type="Script" uid="uid://dav0ujyeajd6j" path="res://timeseg.gd" id="8_5vw27"]
+[ext_resource type="Script" uid="uid://cbt1cqd2rstd7" path="res://scripts/retainer.gd" id="1_tipki"]
+[ext_resource type="Script" uid="uid://brl861csa57mi" path="res://scripts/minegrid.gd" id="2_85g3d"]
+[ext_resource type="Texture2D" uid="uid://dx4k0t1y3mcjp" path="res://map.png" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cqhhvuqwhw7md" path="res://reference.png" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://diu8rvb1e77nb" path="res://scripts/tile.gd" id="4_choun"]
+[ext_resource type="Script" uid="uid://0sxjbgip7ns3" path="res://scripts/face.gd" id="6_ya4ey"]
+[ext_resource type="Script" uid="uid://6bjwdqt84hld" path="res://scripts/7segs.gd" id="7_eb6dy"]
+[ext_resource type="Script" uid="uid://byf0wabpqd0gp" path="res://scripts/timeseg.gd" id="8_trceg"]
 
 [sub_resource type="Theme" id="Theme_0xm2m"]
 GridContainer/constants/h_separation = 0
@@ -32,7 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7mycd")
+script = ExtResource("1_tipki")
 
 [node name="sweeper" type="Control" parent="."]
 z_index = 10
@@ -59,7 +59,7 @@ offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_0xm2m")
-script = ExtResource("1_ig7tw")
+script = ExtResource("2_85g3d")
 
 [node name="tile" type="TextureButton" parent="sweeper/minegrid"]
 layout_mode = 2
@@ -69,7 +69,7 @@ button_mask = 3
 texture_normal = SubResource("AtlasTexture_h2yge")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("3_h2yge")
+script = ExtResource("4_choun")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="sweeper"]
 layout_mode = 1
@@ -89,22 +89,6 @@ patch_margin_left = 48
 patch_margin_top = 48
 patch_margin_right = 32
 patch_margin_bottom = 32
-
-[node name="face" type="TextureButton" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -231.0
-offset_top = 60.0
-offset_right = -110.0
-offset_bottom = 181.0
-grow_horizontal = 0
-texture_normal = SubResource("AtlasTexture_1bvp3")
-texture_pressed = SubResource("AtlasTexture_lquwl")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("5_lquwl")
 
 [node name="gridx" type="SpinBox" parent="."]
 layout_mode = 0
@@ -133,40 +117,6 @@ max_value = 1000.0
 value = 999.0
 suffix = "mines"
 
-[node name="timeseg" type="Control" parent="."]
-z_index = 1
-layout_mode = 3
-anchors_preset = 0
-offset_left = 893.0
-offset_top = 407.0
-offset_right = 1244.0
-offset_bottom = 613.0
-scale = Vector2(0.5, 0.5)
-script = ExtResource("8_5vw27")
-
-[node name="3" type="Sprite2D" parent="timeseg"]
-scale = Vector2(8.96154, 8.96154)
-texture = ExtResource("2_h2yge")
-centered = false
-region_enabled = true
-region_rect = Rect2(154, 0, 13, 23)
-
-[node name="2" type="Sprite2D" parent="timeseg"]
-position = Vector2(117, 0)
-scale = Vector2(8.96154, 8.96154)
-texture = ExtResource("2_h2yge")
-centered = false
-region_enabled = true
-region_rect = Rect2(154, 0, 13, 23)
-
-[node name="1" type="Sprite2D" parent="timeseg"]
-position = Vector2(234, 0)
-scale = Vector2(8.96154, 8.96154)
-texture = ExtResource("2_h2yge")
-centered = false
-region_enabled = true
-region_rect = Rect2(154, 0, 13, 23)
-
 [node name="mineseg" type="Control" parent="."]
 z_index = 1
 anchors_preset = 0
@@ -175,7 +125,7 @@ offset_top = 290.0
 offset_right = 1244.0
 offset_bottom = 496.0
 scale = Vector2(0.5, 0.5)
-script = ExtResource("7_272bh")
+script = ExtResource("7_eb6dy")
 
 [node name="3" type="Sprite2D" parent="mineseg"]
 scale = Vector2(8.96154, 8.96154)
@@ -200,6 +150,61 @@ centered = false
 region_enabled = true
 region_rect = Rect2(154, 0, 13, 23)
 
-[connection signal="button_down" from="sweeper/minegrid/tile" to="sweeper/minegrid/tile" method="_on_held"]
+[node name="timeseg" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 895.0
+offset_top = 407.0
+offset_right = 1246.0
+offset_bottom = 613.0
+scale = Vector2(0.5, 0.5)
+script = ExtResource("8_trceg")
+
+[node name="3" type="Sprite2D" parent="timeseg"]
+scale = Vector2(8.96154, 8.96154)
+texture = ExtResource("2_h2yge")
+centered = false
+region_enabled = true
+region_rect = Rect2(154, 0, 13, 23)
+
+[node name="2" type="Sprite2D" parent="timeseg"]
+position = Vector2(117, 0)
+scale = Vector2(8.96154, 8.96154)
+texture = ExtResource("2_h2yge")
+centered = false
+region_enabled = true
+region_rect = Rect2(154, 0, 13, 23)
+
+[node name="1" type="Sprite2D" parent="timeseg"]
+position = Vector2(234, 0)
+scale = Vector2(8.96154, 8.96154)
+texture = ExtResource("2_h2yge")
+centered = false
+region_enabled = true
+region_rect = Rect2(154, 0, 13, 23)
+
+[node name="Window" type="Window" parent="."]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+position = Vector2i(923, 55)
+size = Vector2i(120, 120)
+exclusive = true
+unresizable = true
+always_on_top = true
+transparent = true
+
+[node name="face" type="TextureButton" parent="Window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_1bvp3")
+texture_pressed = SubResource("AtlasTexture_lquwl")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("6_ya4ey")
+
 [connection signal="pressed" from="sweeper/minegrid/tile" to="sweeper/minegrid/tile" method="_on_press"]
-[connection signal="button_up" from="face" to="face" method="_on_reset"]
+[connection signal="button_up" from="Window/face" to="Window/face" method="_on_reset"]

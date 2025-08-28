@@ -8,7 +8,6 @@ var flagged := []
 var first := true
 var remaining_tiles := []
 var curstate: String = "normal"
-var examtscn = preload("res://example.tscn")
 var remaining_bombs := []
 
 signal reload
