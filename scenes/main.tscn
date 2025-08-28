@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cbt1cqd2rstd7" path="res://scripts/retainer.gd" id="1_tipki"]
 [ext_resource type="Script" uid="uid://brl861csa57mi" path="res://scripts/minegrid.gd" id="2_85g3d"]
-[ext_resource type="Texture2D" uid="uid://dx4k0t1y3mcjp" path="res://map.png" id="2_h2yge"]
-[ext_resource type="Texture2D" uid="uid://cqhhvuqwhw7md" path="res://reference.png" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://dpcvrd7wdo5je" path="res://sprites/map.png" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://bcmk6ec7yf6so" path="res://sprites/reference.png" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://diu8rvb1e77nb" path="res://scripts/tile.gd" id="4_choun"]
 [ext_resource type="Script" uid="uid://0sxjbgip7ns3" path="res://scripts/face.gd" id="6_ya4ey"]
 [ext_resource type="Script" uid="uid://6bjwdqt84hld" path="res://scripts/7segs.gd" id="7_eb6dy"]
@@ -206,5 +206,6 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("6_ya4ey")
 
+[connection signal="button_down" from="sweeper/minegrid/tile" to="sweeper/minegrid/tile" method="_on_held"]
 [connection signal="pressed" from="sweeper/minegrid/tile" to="sweeper/minegrid/tile" method="_on_press"]
 [connection signal="button_up" from="Window/face" to="Window/face" method="_on_reset"]
