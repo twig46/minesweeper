@@ -2,6 +2,10 @@ extends Window
 var is_dragging = false
 var mouse_offset
 
+func _ready() -> void:
+	if self == get_node("/root/main/grid"):
+		size.x = $sweeper.size.x + 80
+
 func _enter_tree() -> void:
 	if Global.win_position.has(name):
 		position = Global.win_position[name]
@@ -16,6 +20,8 @@ func _input(event: InputEvent) -> void:
 			is_dragging = false
 	if event is InputEventMouseMotion and is_dragging:
 		position += Vector2i(event.position - mouse_offset)
+	if self == get_node("/root/main/grid"):
+		get_node("/root/main/facewin/face")._input(event)
 
 func _on_close() -> void:
 	get_tree().quit()
