@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://rrfj6px2553t"]
+[gd_scene load_steps=17 format=3 uid="uid://rrfj6px2553t"]
 
 [ext_resource type="Script" uid="uid://cbt1cqd2rstd7" path="res://scripts/retainer.gd" id="1_tipki"]
 [ext_resource type="Script" uid="uid://brl861csa57mi" path="res://scripts/minegrid.gd" id="2_85g3d"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://0sxjbgip7ns3" path="res://scripts/face.gd" id="6_ya4ey"]
 [ext_resource type="Script" uid="uid://6bjwdqt84hld" path="res://scripts/7segs.gd" id="7_eb6dy"]
 [ext_resource type="Script" uid="uid://byf0wabpqd0gp" path="res://scripts/timeseg.gd" id="8_trceg"]
+[ext_resource type="Texture2D" uid="uid://bpnxhbh712xqg" path="res://sprites/r6g38aXSaQWtd1KxwJbQ-Fs5jtSVDxX3wtLHJEdqixw.png" id="11_eb6dy"]
+[ext_resource type="Script" uid="uid://dibvosrsdoihp" path="res://scenes/weback.gd" id="12_trceg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1bvp3"]
 atlas = ExtResource("2_h2yge")
@@ -39,7 +41,7 @@ script = ExtResource("1_tipki")
 [node name="numbers" type="Window" parent="."]
 transparent_bg = true
 canvas_item_default_texture_filter = 0
-position = Vector2i(0, 36)
+position = Vector2i(941, 222)
 size = Vector2i(175, 306)
 unresizable = true
 transparent = true
@@ -49,14 +51,17 @@ script = ExtResource("5_85g3d")
 offset_left = 1.0
 offset_right = 175.0
 offset_bottom = 31.0
+min_value = 4.0
+value = 4.0
 suffix = "x"
-custom_arrow_step = 1.0
 
 [node name="gridy" type="SpinBox" parent="numbers"]
 offset_left = 1.0
 offset_top = 34.0
 offset_right = 175.0
 offset_bottom = 65.0
+min_value = 4.0
+value = 4.0
 suffix = "y"
 
 [node name="mines" type="SpinBox" parent="numbers"]
@@ -137,10 +142,9 @@ region_rect = Rect2(154, 0, 13, 23)
 
 [node name="facewin" type="Window" parent="."]
 canvas_item_default_texture_filter = 0
-position = Vector2i(956, 55)
+position = Vector2i(968, 55)
 size = Vector2i(120, 120)
 unresizable = true
-always_on_top = true
 extend_to_title = true
 script = ExtResource("5_85g3d")
 
@@ -217,6 +221,14 @@ patch_margin_left = 48
 patch_margin_top = 48
 patch_margin_right = 32
 patch_margin_bottom = 32
+
+[node name="weback" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
+position = Vector2(576.919, 323.75)
+scale = Vector2(1.06837, 1.06837)
+texture = ExtResource("11_eb6dy")
+script = ExtResource("12_trceg")
 
 [connection signal="close_requested" from="numbers" to="numbers" method="_on_close"]
 [connection signal="close_requested" from="facewin" to="facewin" method="_on_close"]
