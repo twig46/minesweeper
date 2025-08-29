@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://rrfj6px2553t"]
+[gd_scene load_steps=15 format=3 uid="uid://rrfj6px2553t"]
 
 [ext_resource type="Script" uid="uid://cbt1cqd2rstd7" path="res://scripts/retainer.gd" id="1_tipki"]
 [ext_resource type="Script" uid="uid://brl861csa57mi" path="res://scripts/minegrid.gd" id="2_85g3d"]
 [ext_resource type="Texture2D" uid="uid://dpcvrd7wdo5je" path="res://sprites/map.png" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://cscuv3fv8tec0" path="res://scenes/mines.gd" id="3_choun"]
 [ext_resource type="Texture2D" uid="uid://bcmk6ec7yf6so" path="res://sprites/reference.png" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://diu8rvb1e77nb" path="res://scripts/tile.gd" id="4_choun"]
 [ext_resource type="Script" uid="uid://cmhmprctde2mn" path="res://scripts/facewin.gd" id="5_85g3d"]
@@ -66,6 +67,7 @@ offset_bottom = 98.0
 max_value = 1000.0
 value = 999.0
 suffix = "mines"
+script = ExtResource("3_choun")
 
 [node name="mineseg" type="Control" parent="numbers"]
 z_index = 1

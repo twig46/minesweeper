@@ -10,11 +10,7 @@ var remaining_tiles := []
 var curstate: String = "normal"
 var remaining_bombs := []
 
-signal reload
-
 func _ready() -> void:
-	emit_signal("reload")
-	print("reload")
 	example = $tile
 	spawn_grid()
 
