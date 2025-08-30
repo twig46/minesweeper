@@ -31,13 +31,10 @@ func spawn_grid():
 
 func clicked(tile: Control, clear:bool = false) -> void:
 	remaining_tiles.erase(tile)
+	remaining_bombs.clear()
 	for r in remaining_tiles:
 		if bombs.has(r):
 			remaining_bombs.append(r)
-	if remaining_tiles == remaining_bombs:
-		print(remaining_tiles)
-		for r in remaining_tiles.duplicate():
-			r.flag()
 	if tile.index.z == 14:
 		curstate = "lose"
 		print("lose")
@@ -76,6 +73,11 @@ func clicked(tile: Control, clear:bool = false) -> void:
 			for n in tile.get_neighbours():
 				if !n.revealed and !n.flagged:
 					n._on_pressed()
+	print("compare: ", compare(remaining_tiles, remaining_bombs))
+	if compare(remaining_tiles, remaining_bombs):
+		print(remaining_tiles)
+		for r in remaining_tiles.duplicate():
+			r.flag()
 	return
 
 
@@ -116,3 +118,13 @@ func reveal_tile(tile: Control) -> void:
 	if count == 0:
 		for n in tile.get_neighbours():
 			reveal_tile(n)
+
+func compare(a: Array, b: Array) -> bool:
+	if b.size() != a.size():
+		print("!size: ", a.size(), ", ", b.size())
+		return false
+	for i in a:
+		if !b.has(i):
+			print("!contents")
+			return false
+	return true
