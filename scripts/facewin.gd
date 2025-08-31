@@ -3,8 +3,14 @@ var is_dragging = false
 var mouse_offset
 
 func _ready() -> void:
+	print(get_tree().get_root().size)
+	print(get_window().size)
 	if self == get_node("/root/main/grid"):
-		size.x = $sweeper.size.x + 80
+		size.y = get_tree().get_root().size.y * 0.75
+		size.x = size.y
+	if self == get_node("/root/main/facewin"):
+		size.y = get_tree().get_root().size.y / 7
+		size.x = size.y
 
 func _enter_tree() -> void:
 	if Global.win_position.has(name):

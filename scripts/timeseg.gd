@@ -12,16 +12,16 @@ func _exit_tree() -> void:
 
 func start():
 	await get_tree().process_frame
-	var minegrid = get_node_or_null("/root/main/sweeper/minegrid")
+	var minegrid = get_node_or_null("/root/main/grid/sweeper/minegrid")
 	while running:
 		if minegrid == null:
 			break
 		while minegrid.first == true and running:
 			await get_tree().process_frame
 		while minegrid.curstate == "normal" and running:
-			await get_tree().create_timer(1).timeout
 			time += 1
 			update()
+			await get_tree().create_timer(1).timeout
 		break
 
 func update():
